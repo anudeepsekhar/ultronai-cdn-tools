@@ -1,9 +1,9 @@
 # Ultron AI CDN Tools
 
 ## Installation 
-``` git clone https://github.com/anudeepsekhar/ultronai-cdn-tools.git```
+```git clone https://github.com/anudeepsekhar/ultronai-cdn-tools.git```
 
-``` pip install -e . ```
+```pip install -e .```
 
 ## Usage 
 
