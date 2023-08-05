@@ -54,7 +54,7 @@ class BlobStorageClient:
             account_key=self.account_key,
             resource_types=ResourceTypes(service=True, object=True, container=True),
             permission=AccountSasPermissions(read=True, write=True),
-            expiry=datetime.utcnow() + timedelta(minutes=1),
+            expiry=datetime.utcnow() + timedelta(minutes=120),
         )
 
         self.expiry = datetime.utcnow() + timedelta(minutes=1)
@@ -129,7 +129,8 @@ class BlobStorageClient:
             self.logger.error(
                 f"A blob with the name '{blob_name}' already exists in the container '{container_name}'."
             )
-            return 409, None
+            image_url = self.get_url_from_path(image_path, container_name)
+            return 409, image_url
 
         except ResourceNotFoundError:
             self.logger.error(
